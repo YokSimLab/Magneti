@@ -11,4 +11,5 @@
 *.mat text eol=lf
 *.mask text eol=lf
 *.spriteatlas text eol=lf
+*.cs text eol=lf
 * text=auto eol=lf

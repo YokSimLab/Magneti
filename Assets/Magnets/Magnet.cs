@@ -1,41 +1,97 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
+//
+// Summary:
+//     Object that pulls and/or can be pulled.
+//     Can be controlled via booleans
 public class Magnet : MonoBehaviour
 {
+    public bool isPullingMagnet;
+    public bool isPulledMagnet;
+    public float magneticForce;
 
-    [SerializeField] private float gravity = 1;
-    private void OnTriggerStay2D(Collider2D collider)
+    [SerializeField] private HashSet<Magnet> pulledMagnetsInField;
+    private Rigidbody2D myRigidBody2D;
+
+    private void Start()
     {
-        if (collider.CompareTag("Magnetized"))
+        myRigidBody2D = GetComponent<Rigidbody2D>();
+        pulledMagnetsInField = new HashSet<Magnet> { };
+
+        //Change color (JUST FOR NOW)
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer)
         {
-            PlayerMovement playerMovement = collider.GetComponent<PlayerMovement>();
-            float grabityMultibication = playerMovement ? playerMovement.GravityMultiplier : 1;
-            AddGravityForce(GetComponent<Rigidbody2D>(),collider.GetComponent<Rigidbody2D>(),grabityMultibication);   
+            if (magneticForce > 0)
+            {
+                spriteRenderer.color = Color.red;
+
+            }
+            else
+            {
+                spriteRenderer.color = Color.blue;
+            }
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isPullingMagnet) return;
+        print(collision.name);
 
-public void AddGravityForce(Rigidbody2D attractor, Rigidbody2D target, float PlayerGravityMultiplier)
-{
-    float massProduct = attractor.mass*target.mass;
-    
-    //You could also do
-    //float distance = Vector3.Distance(attractor.position,target.position.
-    Vector3 difference = attractor.position - target.position;
-    float distance = difference.magnitude; // r = Mathf.Sqrt((x*x)+(y*y))
+        Magnet enteredMagnet = collision.GetComponent<Magnet>();
+        if (enteredMagnet && enteredMagnet.isPulledMagnet)
+        {
+            pulledMagnetsInField.Add(enteredMagnet);
+        }
+    }
 
-    //F = G * ((m1*m2)/r^2)
-    float unScaledforceMagnitude = massProduct/Mathf.Pow(distance,2);
-    float forceMagnitude = gravity * unScaledforceMagnitude * PlayerGravityMultiplier;
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!isPullingMagnet) return;
 
-    Vector3 forceDirection = difference.normalized;
+        Magnet exitedMagnet = collision.GetComponent<Magnet>();
+        if (exitedMagnet && exitedMagnet.isPulledMagnet)
+        {
+            pulledMagnetsInField.Remove(exitedMagnet);
+        }
+    }
 
-    Vector3 forceVector = forceDirection*forceMagnitude;
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if (!isPullingMagnet) return;
 
-    target.AddForce(forceVector);
-}
+        foreach (Magnet magnet in pulledMagnetsInField)
+        {
+            Vector3 magneticForceToApply = CalcMagneticForce(magnet, this);
+            magnet.ApplyMagneticForce(magneticForceToApply);
+        }
+    }
+
+    public Vector3 CalcMagneticForce(Magnet attractor, Magnet target)
+    {
+        float magneticForcesProduct = attractor.magneticForce * target.magneticForce;
+
+        Vector3 difference = attractor.transform.position - target.transform.position;
+        float distance = difference.magnitude;
+
+        //F = k * ((q1*q2) / r^2)
+        //See: Coulomb’s Laws of Electrostatics 
+        float forceMagnitude = magneticForcesProduct / Mathf.Pow(distance, 2f);
+
+        Vector3 forceDirection = difference.normalized;
+        Vector3 forceVector = forceDirection * forceMagnitude;
+
+        return forceVector;
+    }
+
+    public void ApplyMagneticForce(Vector3 magneticForceToApply)
+    {
+        if (myRigidBody2D)
+        {
+            myRigidBody2D.AddForce(magneticForceToApply);
+        }
+    }
 }

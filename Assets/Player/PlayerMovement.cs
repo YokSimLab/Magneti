@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,8 +17,29 @@ public class PlayerMovement : MonoBehaviour
         //These name suck because they don't really do, but check for input and then do
         ChangePolarity();
         ResetGame();
+        OnClick();
 
         ChangePlayerRotationToVelocity();
+    }
+
+    private void OnClick()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            foreach (Magnet magnet in FindObjectsOfType<Magnet>())
+            {
+                magnet.pulledMagnetsInField.Remove(GetComponent<Magnet>());
+            }
+
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+
+            Magnet nearestMagnet = FindNearestMagnet(mousePosition);
+            if (nearestMagnet != null)
+            {
+                nearestMagnet.pulledMagnetsInField.Add(GetComponent<Magnet>());
+            }
+        }
     }
 
     private void ChangePolarity()
@@ -60,5 +82,21 @@ public class PlayerMovement : MonoBehaviour
         VelocityDirection = Vector3.Lerp(lastVelocityDirection, VelocityDirection, velocityAnimationChangeMultiplier);
         transform.rotation = Quaternion.LookRotation(Vector3.forward, VelocityDirection);
         lastVelocityDirection = VelocityDirection;
+    }
+
+    Magnet FindNearestMagnet(Vector3 clickPosition)
+    {
+        Magnet[] magnets = GameObject.FindObjectsOfType<Magnet>();
+
+        if (magnets.Length == 0)
+        {
+            return null;
+        }
+
+        Magnet nearestObject = magnets
+            .OrderBy(obj => Vector3.Distance(clickPosition, obj.transform.position))
+            .First();
+
+        return nearestObject;
     }
 }

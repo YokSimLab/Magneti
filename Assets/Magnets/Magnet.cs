@@ -12,13 +12,15 @@ public class Magnet : MonoBehaviour
     public bool isPulledMagnet;
     public float magneticForce;
 
-    [SerializeField] public HashSet<Magnet> pulledMagnetsInField;
+    private HashSet<Magnet> pulledMagnetsInField;
     private Rigidbody2D myRigidBody2D;
+
+    public HashSet<Magnet> PulledMagnetsInField { get => pulledMagnetsInField; set => pulledMagnetsInField = value; }
 
     private void Start()
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
-        pulledMagnetsInField = new HashSet<Magnet> { };
+        PulledMagnetsInField = new HashSet<Magnet> { };
 
         //Change color (JUST FOR NOW)
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
@@ -36,45 +38,11 @@ public class Magnet : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (!isPullingMagnet) return;
-    //    print(collision.name);
-
-    //    Magnet enteredMagnet = collision.GetComponent<Magnet>();
-    //    if (enteredMagnet && enteredMagnet.isPulledMagnet)
-    //    {
-    //        pulledMagnetsInField.Add(enteredMagnet);
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (!isPullingMagnet) return;
-
-    //    Magnet exitedMagnet = collision.GetComponent<Magnet>();
-    //    if (exitedMagnet && exitedMagnet.isPulledMagnet)
-    //    {
-    //        pulledMagnetsInField.Remove(exitedMagnet);
-    //    }
-    //}
-
-    //private void OnTriggerStay2D(Collider2D collider)
-    //{
-    //    if (!isPullingMagnet) return;
-
-    //    foreach (Magnet magnet in pulledMagnetsInField)
-    //    {
-    //        Vector3 magneticForceToApply = CalcMagneticForce(magnet, this);
-    //        magnet.ApplyMagneticForce(magneticForceToApply);
-    //    }
-    //}
-
     private void Update()
     {
         if (!isPullingMagnet) return;
 
-        foreach (Magnet magnet in pulledMagnetsInField)
+        foreach (Magnet magnet in PulledMagnetsInField)
         {
             Vector3 magneticForceToApply = CalcMagneticForce(magnet, this);
             magnet.ApplyMagneticForce(magneticForceToApply);
@@ -88,9 +56,8 @@ public class Magnet : MonoBehaviour
         Vector3 difference = attractor.transform.position - target.transform.position;
         float distance = difference.magnitude;
 
-        //F = k * ((q1*q2) / r^2)
-        //See: Coulomb’s Laws of Electrostatics 
-        //float forceMagnitude = magneticForcesProduct / Mathf.Pow(distance, 2f);
+        //F = k * ((q1*q2) / sqrt(r))
+        //See: Duppah mind
         float forceMagnitude = magneticForcesProduct / Mathf.Sqrt(distance);
 
         Vector3 forceDirection = difference.normalized;

@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         {
             foreach (Magnet magnet in FindObjectsOfType<Magnet>())
             {
-                magnet.pulledMagnetsInField.Remove(GetComponent<Magnet>());
+                magnet.PulledMagnetsInField.Remove(GetComponent<Magnet>());
             }
 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
             Magnet nearestMagnet = FindNearestMagnet(mousePosition);
             if (nearestMagnet != null)
             {
-                nearestMagnet.pulledMagnetsInField.Add(GetComponent<Magnet>());
+                nearestMagnet.PulledMagnetsInField.Add(GetComponent<Magnet>());
             }
         }
     }

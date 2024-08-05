@@ -103,7 +103,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 0.0001
 --- !u!50 &412774243166486802
 Rigidbody2D:
   serializedVersion: 4
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPullingMagnet: 1
   isPulledMagnet: 0
-  magneticForce: -1
+  magneticForce: -2
 --- !u!58 &5209508678575434532
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -15,6 +15,11 @@ public class GasManager : MonoBehaviour
         RemoveGas();
     }
 
+    public void AddGas(float gasAmount)
+    {
+        currentGas += gasAmount;
+    }
+
     private void RemoveGas()
     {
         currentGas = Mathf.Clamp(currentGas - (gasRemoveRate * Time.deltaTime), 0, maxGas);

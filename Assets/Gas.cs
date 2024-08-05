@@ -8,11 +8,9 @@ public class Gas : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("ENTER");
         GasManager gasManager = collision.GetComponent<GasManager>();
         if (gasManager)
         {
-            print("DESTORY");
             gasManager.AddGas(gasAmount);
             Destroy(gameObject);
         }

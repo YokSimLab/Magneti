@@ -19,12 +19,15 @@ public class PlayerMovement : MonoBehaviour
         ResetGame();
         OnClick();
 
+
+
         ChangePlayerRotationToVelocity();
     }
 
     private void OnClick()
     {
-        if (Input.GetMouseButtonDown(0))
+        GasManager gas = GetComponent<GasManager>();
+        if (Input.GetMouseButtonDown(0) && gas && gas.CurrentGas > 0)
         {
             foreach (Magnet magnet in FindObjectsOfType<Magnet>())
             {

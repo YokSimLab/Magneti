@@ -199,11 +199,31 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1735099587}
   m_SourcePrefab: {fileID: 100100000, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
+--- !u!1 &162761888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1038675808924185236, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+  m_PrefabInstance: {fileID: 8975987309164525339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &162761894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6320217311243131754, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
   m_PrefabInstance: {fileID: 8975987309164525339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &162761895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162761888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7431e593e586c41abd3a26117f4cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGas: 100
+  currentGas: 100
+  gasRemoveRate: 15
 --- !u!1001 &164881377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,7 +533,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
@@ -1085,7 +1105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613029149188081195, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
       propertyPath: magneticForce
-      value: -2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8797443455580311339, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
       propertyPath: m_Name
@@ -1277,6 +1297,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5463490101699464793, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: maxGas
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463490101699464793, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: currentGas
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463490101699464793, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: gasRemoveRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6320217311243131754, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2
@@ -1320,7 +1352,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1038675808924185236, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 162761895}
   m_SourcePrefab: {fileID: 100100000, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

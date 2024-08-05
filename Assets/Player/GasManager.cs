@@ -9,6 +9,8 @@ public class GasManager : MonoBehaviour
     [SerializeField] float currentGas;
     [SerializeField] float gasRemoveRate;
     [SerializeField] Slider gasSlider;
+    [SerializeField] GameObject failText;
+
     public float CurrentGas { get => currentGas; set => currentGas = value; }
 
     void Update()
@@ -32,6 +34,8 @@ public class GasManager : MonoBehaviour
             {
                 magnet.PulledMagnetsInField.Remove(GetComponent<Magnet>());
             }
+
+            failText.SetActive(true);
         }
     }
 }

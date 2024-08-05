@@ -102,4 +102,9 @@ public class PlayerMovement : MonoBehaviour
 
         return nearestObject;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("DSADASD");
+    }
 }

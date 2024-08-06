@@ -23,19 +23,19 @@ public class Magnet : MonoBehaviour
         PulledMagnetsInField = new HashSet<Magnet> { };
 
         //Change color (JUST FOR NOW)
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer)
-        {
-            if (magneticForce > 0)
-            {
-                spriteRenderer.color = Color.red;
+        //SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        //if (spriteRenderer)
+        //{
+        //    if (magneticForce > 0)
+        //    {
+        //        spriteRenderer.color = Color.red;
 
-            }
-            else
-            {
-                spriteRenderer.color = Color.blue;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        spriteRenderer.color = Color.blue;
+        //    }
+        //}
     }
 
     private void Update()

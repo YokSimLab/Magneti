@@ -1543,10 +1543,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.tilesX
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.animationType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.startFrame.scalar
+      value: 0.9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.frameOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.startFrame.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 990943533273898047, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: UVModule.frameOverTime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1038675808924185236, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5561231133773370200, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 619569b93934af140816d82c08da9f59, type: 2}
     - target: {fileID: 6320217311243131754, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2
@@ -1595,10 +1643,6 @@ PrefabInstance:
       propertyPath: gasSlider
       value: 
       objectReference: {fileID: 1476402935}
-    - target: {fileID: 8875929506719632102, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
-      propertyPath: gasRemoveRate
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -19,15 +19,13 @@ public class PlayerMovement : MonoBehaviour
         ResetGame();
         OnClick();
 
-
-
         ChangePlayerRotationToVelocity();
     }
 
     private void OnClick()
     {
         GasManager gas = GetComponent<GasManager>();
-        if (Input.GetMouseButtonDown(0) && gas && gas.CurrentGas > 0)
+        if (((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0)) && gas && gas.CurrentGas > 0)
         {
             foreach (Magnet magnet in FindObjectsOfType<Magnet>())
             {
@@ -53,21 +51,6 @@ public class PlayerMovement : MonoBehaviour
             if (myMagnet)
             {
                 myMagnet.magneticForce *= -1.0f;
-
-                //Change color (JUST FOR NOW)
-                SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-                if (spriteRenderer)
-                {
-                    if (myMagnet.magneticForce > 0)
-                    {
-                        spriteRenderer.color = Color.red;
-
-                    }
-                    else
-                    {
-                        spriteRenderer.color = Color.blue;
-                    }
-                }
             }
         }
     }

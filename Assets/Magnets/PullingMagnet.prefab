@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPullingMagnet: 1
   isPulledMagnet: 0
-  magneticForce: -2
+  magneticForce: -750
 --- !u!58 &5209508678575434532
 CircleCollider2D:
   m_ObjectHideFlags: 0

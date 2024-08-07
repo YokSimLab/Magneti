@@ -56,7 +56,7 @@ public class Magnet : MonoBehaviour
             forceVector = forceDirection * forceMagnitude * (Mathf.Sqrt(target.GetComponent<Rigidbody2D>().velocity.magnitude));
         }
 
-        return forceVector;
+        return forceVector * Time.deltaTime;
     }
 
     public void ApplyMagneticForce(Vector3 magneticForceToApply)

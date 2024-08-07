@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
 
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     private void Update()
     {
         ResetGame();

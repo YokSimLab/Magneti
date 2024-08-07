@@ -381,6 +381,8 @@ MonoBehaviour:
   gasCan2: {fileID: 1285813050}
   gasCan3: {fileID: 1517026869}
   winText: {fileID: 1173025133}
+  failText: {fileID: 1001606508}
+  playerMovement: {fileID: 1166754135}
 --- !u!4 &410779115
 Transform:
   m_ObjectHideFlags: 0
@@ -771,6 +773,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001606508}
   m_CullTransparentMesh: 1
+--- !u!114 &1166754135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5463490101699464793, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+  m_PrefabInstance: {fileID: 8975987309164525339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46602eb353d6944cbbc38870d2dbd86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1173025133
 GameObject:
   m_ObjectHideFlags: 0

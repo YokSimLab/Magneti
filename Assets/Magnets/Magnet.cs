@@ -69,6 +69,9 @@ public class Magnet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        FindObjectOfType<GameManager>().FailGame();
+        if (other.gameObject.tag == "Player")
+        {
+            FindObjectOfType<GameManager>().FailGame();
+        }
     }
 }

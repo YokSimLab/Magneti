@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,9 +15,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //These name suck because they don't really do, but check for input and then do
         ChangePolarity();
-        ResetGame();
         OnClick();
-
         ChangePlayerRotationToVelocity();
     }
 
@@ -52,13 +49,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 myMagnet.magneticForce *= -1.0f;
             }
-        }
-    }
-    private static void ResetGame()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

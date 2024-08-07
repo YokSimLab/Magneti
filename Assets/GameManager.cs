@@ -6,6 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance is null)
+            {
+                Debug.LogError("Game manager is null");
+            }
+
+            return _instance;
+        }
+    }
+    #endregion
+
     [SerializeField] GameObject gasCan1;
     [SerializeField] GameObject gasCan2;
     [SerializeField] GameObject gasCan3;
@@ -13,6 +30,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject failText;
     [SerializeField] PlayerMovement playerMovement;
 
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     private void Start()
     {

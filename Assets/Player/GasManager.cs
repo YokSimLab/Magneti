@@ -40,7 +40,7 @@ public class GasManager : MonoBehaviour
                 magnet.PulledMagnetsInField.Remove(GetComponent<Magnet>());
             }
 
-            FindObjectOfType<GameManager>().FailGame();
+            GameManager.Instance.FailGame();
         }
     }
 }

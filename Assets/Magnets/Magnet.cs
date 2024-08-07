@@ -73,5 +73,6 @@ public class Magnet : MonoBehaviour
         {
             FindObjectOfType<GameManager>().FailGame();
         }
+        GameManager.Instance.FailGame();
     }
 }

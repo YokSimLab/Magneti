@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        ResetGame();
+        TryResetGame();
 
         if (!(gasCan1 || gasCan2 || gasCan3))
         {
@@ -50,12 +50,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private static void ResetGame()
+    private void TryResetGame()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            ResetGame();
         }
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void WonGame()

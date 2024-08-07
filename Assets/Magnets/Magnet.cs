@@ -15,27 +15,16 @@ public class Magnet : MonoBehaviour
     private HashSet<Magnet> pulledMagnetsInField;
     private Rigidbody2D myRigidBody2D;
 
-    public HashSet<Magnet> PulledMagnetsInField { get => pulledMagnetsInField; set => pulledMagnetsInField = value; }
+    public HashSet<Magnet> PulledMagnetsInField
+    {
+        get => pulledMagnetsInField;
+        set => pulledMagnetsInField = value;
+    }
 
     private void Start()
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         PulledMagnetsInField = new HashSet<Magnet> { };
-
-        //Change color (JUST FOR NOW)
-        //SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        //if (spriteRenderer)
-        //{
-        //    if (magneticForce > 0)
-        //    {
-        //        spriteRenderer.color = Color.red;
-
-        //    }
-        //    else
-        //    {
-        //        spriteRenderer.color = Color.blue;
-        //    }
-        //}
     }
 
     private void Update()
@@ -76,5 +65,10 @@ public class Magnet : MonoBehaviour
         {
             myRigidBody2D.AddForce(magneticForceToApply);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        FindObjectOfType<GameManager>().FailGame();
     }
 }

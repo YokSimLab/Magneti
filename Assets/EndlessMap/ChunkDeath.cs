@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class ChunkDeath : MonoBehaviour
 {
-    [SerializeField] private ChunkManager _chunkManager;
+    [SerializeField] private ChunkManager chunkManager;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        _chunkManager.OnTouchBoundaries();
+        chunkManager.OnTouchBoundaries();
     }
 }

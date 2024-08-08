@@ -16,11 +16,24 @@ public class ChunkManager : MonoBehaviour
 
     public void OnLoadTop()
     {
-        Instantiate(chunk, transform.position + new Vector3(0, chunkOffset, 0), quaternion.identity);
+        if (!GameManager.Instance.IsGameFail && CheckIfDoesntExist(true))
+        {
+            Instantiate(chunk, transform.position + new Vector3(0, chunkOffset, 0), quaternion.identity);
+        }
     }
 
     public void OnLoadBottom()
     {
-        Instantiate(chunk, transform.position + new Vector3(0, -chunkOffset, 0), quaternion.identity);
+        if (!GameManager.Instance.IsGameFail && CheckIfDoesntExist(false))
+        {
+            Instantiate(chunk, transform.position + new Vector3(0, -chunkOffset, 0), quaternion.identity);
+        }
+    }
+
+    private bool CheckIfDoesntExist(bool isTop)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, isTop ? chunkOffset : -chunkOffset, 0), 0.1f);
+
+        return colliders.Length == 0;
     }
 }

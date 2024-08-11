@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChunkManager : MonoBehaviour
 {
     [SerializeField] private GameObject chunk;
-    [SerializeField] public float chunkOffset;
+    [SerializeField] private float chunkOffset;
 
     public void OnTouchBoundaries()
     {

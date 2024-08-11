@@ -5,17 +5,28 @@ using UnityEngine;
 public class ChunkGenerationTrigger : MonoBehaviour
 {
     [SerializeField] private ChunkManager chunkManager;
-    [SerializeField] private bool isTop = true;
+
+    [SerializeField] private ChunkManager.Direction direction;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isTop)
+        switch (direction)
         {
-            chunkManager.OnLoadTop();
-        }
-        else
-        {
-            chunkManager.OnLoadBottom();
+            case ChunkManager.Direction.Top:
+                chunkManager.OnLoadTop();
+                break;
+            case ChunkManager.Direction.Right:
+                chunkManager.OnLoadRight();
+                break;
+            case ChunkManager.Direction.Left:
+                chunkManager.OnLeftRight();
+                break;
+            case ChunkManager.Direction.Bottom:
+                chunkManager.OnLoadBottom();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 }

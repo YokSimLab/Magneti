@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject failText;
     [SerializeField] PlayerMovement playerMovement;
 
-    [HideInInspector] public bool IsGameFail = false;
+    [HideInInspector] public bool isGameFail = false;
 
     private void Awake()
     {
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
     public void FailGame()
     {
-        IsGameFail = true;
+        isGameFail = true;
         if (failText)
         {
             failText.SetActive(true);

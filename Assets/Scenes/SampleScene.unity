@@ -1592,6 +1592,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1038675808924185236, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
   m_PrefabInstance: {fileID: 8975987309164525339}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1993028279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8875929506719632102, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
+  m_PrefabInstance: {fileID: 8975987309164525339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993028278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7431e593e586c41abd3a26117f4cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1421452125622622921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1645,14 +1656,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 245522968}
     - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
-      propertyPath: gasCan2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
-      propertyPath: gasCan3
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
       propertyPath: winText
       value: 
       objectReference: {fileID: 1173025133}
@@ -1661,9 +1664,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1001606508}
     - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
-      propertyPath: chunkManager
+      propertyPath: gasManager
       value: 
-      objectReference: {fileID: 2877401654065343166, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
+      objectReference: {fileID: 1993028279}
     - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
       propertyPath: playerMovement
       value: 
@@ -1685,6 +1688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2877401654065343166, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
+      propertyPath: chunkOffset
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8385240334416708044, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
       propertyPath: m_Name
       value: ChunkManager

@@ -116,6 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6997737755865752991}
+  - component: {fileID: 5139271140894483687}
   m_Layer: 0
   m_Name: ChunkMagnets
   m_TagString: Untagged
@@ -141,6 +142,23 @@ Transform:
   - {fileID: 7854600919966014048}
   m_Father: {fileID: 8519998686686959315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5139271140894483687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904284887094598382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039246d0c5a64a74eb2e56c891c93eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunk: {fileID: 2877401654065343166}
+  gridOffset: 10
+  seed: 1
+  magnet: {fileID: 8797443455580311339, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
+  minimumProbability: 0.9
 --- !u!1 &4248993188140275463
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,8 +31,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winText;
     [SerializeField] GameObject failText;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] private GasManager gasManager;
 
-    [HideInInspector] public bool IsGameFail = false;
+    [HideInInspector] public bool isGameFail = false;
+    [HideInInspector] public bool isGameWin = false;
+
 
     private void Awake()
     {
@@ -69,17 +72,20 @@ public class GameManager : MonoBehaviour
 
     private void WonGame()
     {
-        if (!failText.activeSelf)
+        if (!isGameFail)
         {
+            isGameWin = true;
             winText.SetActive(true);
+            gasManager.CurrentGas = 100;
+            gasManager.gasRemoveRate = 0;
         }
     }
 
     public void FailGame()
     {
-        IsGameFail = true;
-        if (failText)
+        if (!isGameWin)
         {
+            isGameFail = true;
             failText.SetActive(true);
             playerMovement.enabled = false;
         }

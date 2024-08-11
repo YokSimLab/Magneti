@@ -7,7 +7,7 @@ public class GasManager : MonoBehaviour
 {
     [SerializeField] float maxGas;
     [SerializeField] float currentGas;
-    [SerializeField] float gasRemoveRate;
+    [SerializeField] public float gasRemoveRate;
     [SerializeField] Slider gasSlider;
 
     private GameManager _gameManager;

@@ -50,3 +50,6 @@ MonoBehaviour:
   winText: {fileID: 0}
   failText: {fileID: 0}
   playerMovement: {fileID: 0}
+  gasManager: {fileID: 0}
+  isGameFail: 0
+  isGameWin: 0

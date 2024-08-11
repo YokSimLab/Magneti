@@ -139,11 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039246d0c5a64a74eb2e56c891c93eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 36476
+  minimumProbability: 0.97
   chunk: {fileID: 2877401654065343166}
-  gridOffset: 10
-  seed: 1
   magnet: {fileID: 8797443455580311339, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
-  minimumProbability: 0.9
+  rows: 10
+  columns: 10
 --- !u!1 &4248993188140275463
 GameObject:
   m_ObjectHideFlags: 0

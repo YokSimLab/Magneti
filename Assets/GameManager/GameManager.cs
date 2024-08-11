@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
+
     private static GameManager _instance;
 
     public static GameManager Instance
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
     #endregion
 
     [SerializeField] GameObject gasCan1;
@@ -29,6 +31,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winText;
     [SerializeField] GameObject failText;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] private GasManager gasManager;
+
+    [HideInInspector] public bool isGameFail = false;
+    [HideInInspector] public bool isGameWin = false;
+
 
     private void Awake()
     {
@@ -65,16 +72,20 @@ public class GameManager : MonoBehaviour
 
     private void WonGame()
     {
-        if (!failText.activeSelf)
+        if (!isGameFail)
         {
+            isGameWin = true;
             winText.SetActive(true);
+            gasManager.CurrentGas = 100;
+            gasManager.gasRemoveRate = 0;
         }
     }
 
     public void FailGame()
     {
-        if (failText)
+        if (!isGameWin)
         {
+            isGameFail = true;
             failText.SetActive(true);
             playerMovement.enabled = false;
         }

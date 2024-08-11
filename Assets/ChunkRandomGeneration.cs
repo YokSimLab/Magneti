@@ -36,8 +36,8 @@ public class ChunkRandomGeneration : MonoBehaviour
                     if (probability >= minimumProbability)
                     {
                         Instantiate(magnet);
-                        magnet.transform.position = new(i - (columns / 2),
-                            transform.position.y + j - (rows / 2), 0);
+                        magnet.transform.position = new(transform.position.x + i - (columns / 2),
+                                                        transform.position.y + j - (rows / 2), 0);
 
                         markedSpots.Add(new Vector2(i - 1, j + 1));
                         markedSpots.Add(new Vector2(i, j + 1));

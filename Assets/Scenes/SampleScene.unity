@@ -1688,6 +1688,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2877401654065343166, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
+      propertyPath: chunkOffset
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8385240334416708044, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
       propertyPath: m_Name
       value: ChunkManager

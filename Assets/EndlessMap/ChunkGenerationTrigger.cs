@@ -20,7 +20,7 @@ public class ChunkGenerationTrigger : MonoBehaviour
                 chunkManager.OnLoadRight();
                 break;
             case ChunkManager.Direction.Left:
-                chunkManager.OnLeftRight();
+                chunkManager.OnLoadLeft();
                 break;
             case ChunkManager.Direction.Bottom:
                 chunkManager.OnLoadBottom();

@@ -33,7 +33,7 @@ public class ChunkManager : MonoBehaviour
         }
     }
 
-    public void OnLeftRight()
+    public void OnLoadLeft()
     {
         if (!GameManager.Instance.isGameFail && CheckIfDoesntExist(Direction.Left))
         {

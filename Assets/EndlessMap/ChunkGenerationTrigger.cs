@@ -14,19 +14,21 @@ public class ChunkGenerationTrigger : MonoBehaviour
         switch (direction)
         {
             case ChunkManager.Direction.Top:
-                chunkManager.OnLoadTop();
+                if (other.GetComponent<Rigidbody2D>().velocity.y > 0)
+                    chunkManager.OnLoadTop();
                 break;
             case ChunkManager.Direction.Right:
-                chunkManager.OnLoadRight();
+                if (other.GetComponent<Rigidbody2D>().velocity.x > 0)
+                    chunkManager.OnLoadRight();
                 break;
             case ChunkManager.Direction.Left:
-                chunkManager.OnLoadLeft();
+                if (other.GetComponent<Rigidbody2D>().velocity.x < 0)
+                    chunkManager.OnLoadLeft();
                 break;
             case ChunkManager.Direction.Bottom:
-                chunkManager.OnLoadBottom();
+                if (other.GetComponent<Rigidbody2D>().velocity.y < 0)
+                    chunkManager.OnLoadBottom();
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
 }

@@ -140,8 +140,8 @@ MonoBehaviour:
   minimumProbability: 0.97
   chunk: {fileID: 2877401654065343166}
   magnet: {fileID: 8797443455580311339, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
-  rows: 10
-  columns: 10
+  rows: 5
+  columns: 5
 --- !u!1 &4248993188140275463
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 6353645740201067566}
   m_Layer: 0
   m_Name: ChunkManager
-  m_TagString: Untagged
+  m_TagString: ChunkManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602df2f4fece8bc48b44f477babd0a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkOffset: 7
+  chunkOffset: 5
   chunk: {fileID: 8385240334416708044}
 --- !u!61 &6353645740201067566
 BoxCollider2D:

@@ -24,7 +24,6 @@ public class ChunkRandomGeneration : MonoBehaviour
                             * (1 + transform.position.x + transform.position.y)
                             + transform.position.y);
         Random.InitState(seed + uniqueValue * seed);
-        print(uniqueValue);
 
         for (int i = 0; i <= columns; i++)
         {
@@ -35,9 +34,9 @@ public class ChunkRandomGeneration : MonoBehaviour
                     float probability = Random.Range(0f, 1f);
                     if (probability >= minimumProbability)
                     {
-                        Instantiate(magnet);
-                        magnet.transform.position = new(transform.position.x + i - (columns / 2),
+                        Vector3 magnetPosition = new(transform.position.x + i - (columns / 2),
                                                         transform.position.y + j - (rows / 2), 0);
+                        Instantiate(magnet, magnetPosition, new Quaternion());
 
                         markedSpots.Add(new Vector2(i - 1, j + 1));
                         markedSpots.Add(new Vector2(i, j + 1));

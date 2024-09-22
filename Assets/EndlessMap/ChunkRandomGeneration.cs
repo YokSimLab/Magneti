@@ -7,6 +7,8 @@ public class ChunkRandomGeneration : MonoBehaviour
     [Range(1, 133420)]
     [SerializeField] private int seed = 0;
 
+    [SerializeField] private bool isSeedOn = false;
+
     [Range(0, 1)]
     [SerializeField] private float minimumProbability = 0.9f;
 
@@ -19,6 +21,17 @@ public class ChunkRandomGeneration : MonoBehaviour
 
     private void Awake()
     {
+        isSeedOn = SeedManager.Instance.isSeedOn;
+
+        if (isSeedOn)
+        {
+            seed = SeedManager.Instance.seed;
+        }
+        else
+        {
+            seed = Random.Range(1, 133420);
+        }
+
         //Pairing Function
         int uniqueValue = (int)(0.5 * (transform.position.x + transform.position.y)
                             * (1 + transform.position.x + transform.position.y)

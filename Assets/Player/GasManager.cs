@@ -10,8 +10,6 @@ public class GasManager : MonoBehaviour
     [SerializeField] public float gasRemoveRate;
     [SerializeField] Slider gasSlider;
 
-    private GameManager _gameManager;
-
     public float CurrentGas
     {
         get => currentGas;

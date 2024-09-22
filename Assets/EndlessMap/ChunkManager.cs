@@ -10,6 +10,11 @@ public class ChunkManager : MonoBehaviour
 {
     [SerializeField] private float chunkOffset;
     [SerializeField] private GameObject chunk;
+    [SerializeField] private Color freeLocationColor = Color.green;
+    [SerializeField] private Color occupiedLocationColor = Color.red;
+    [SerializeField] private float checkRadius = 0.1f;
+    [SerializeField] private float gizmoDisplayDuration = 0.1f;
+    [SerializeField] private float gizmoSize = 0.5f;
 
     public enum Direction
     {
@@ -23,12 +28,14 @@ public class ChunkManager : MonoBehaviour
     private Vector3[] rightChunkLocations;
     private Vector3[] leftChunkLocations;
     private Vector3[] bottomChunkLocations;
+    private Vector3[] allChunkLocations;
+
+    private List<(Vector3 position, bool isFree, float timeStamp)> checkedLocations = new List<(Vector3, bool, float)>();
 
     private void Awake()
     {
         InitializeChunksLocations();
     }
-
     private void InitializeChunksLocations()
     {
         topChunkLocations = new Vector3[]
@@ -55,18 +62,33 @@ public class ChunkManager : MonoBehaviour
             new Vector3(chunkOffset, -chunkOffset, 0),
             new Vector3(-chunkOffset, -chunkOffset, 0)
         };
+        allChunkLocations = new Vector3[]
+        {
+            new Vector3(0, 0, 0),
+
+            new Vector3(0, chunkOffset, 0),
+            new Vector3(0, -chunkOffset, 0),
+
+            new Vector3(chunkOffset, 0, 0),
+            new Vector3(chunkOffset, chunkOffset, 0),
+            new Vector3(chunkOffset, -chunkOffset, 0),
+
+            new Vector3(-chunkOffset, 0, 0),
+            new Vector3(-chunkOffset, -chunkOffset, 0),
+            new Vector3(-chunkOffset, chunkOffset, 0),
+        };
     }
 
     public void OnLoadTop()
     {
         if (!GameManager.Instance.isGameFail)
         {
-            List<Vector3> freeLocations = CheckWhatLocationsAreFree(topChunkLocations);
+            List<Vector3> freeLocations = CheckWhatLocationsAreFree(transform.position + new Vector3(0, chunkOffset, 0));
             if (freeLocations.Count > 0)
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(chunk, transform.position + freeLocation, quaternion.identity);
+                    Instantiate(chunk, freeLocation, quaternion.identity);
                 }
             }
         }
@@ -76,12 +98,12 @@ public class ChunkManager : MonoBehaviour
     {
         if (!GameManager.Instance.isGameFail)
         {
-            List<Vector3> freeLocations = CheckWhatLocationsAreFree(rightChunkLocations);
+            List<Vector3> freeLocations = CheckWhatLocationsAreFree(transform.position + new Vector3(chunkOffset, 0, 0));
             if (freeLocations.Count > 0)
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(chunk, transform.position + freeLocation, quaternion.identity);
+                    Instantiate(chunk, freeLocation, quaternion.identity);
                 }
             }
         }
@@ -91,12 +113,12 @@ public class ChunkManager : MonoBehaviour
     {
         if (!GameManager.Instance.isGameFail)
         {
-            List<Vector3> freeLocations = CheckWhatLocationsAreFree(leftChunkLocations);
+            List<Vector3> freeLocations = CheckWhatLocationsAreFree(transform.position + new Vector3(-chunkOffset, 0, 0));
             if (freeLocations.Count > 0)
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(chunk, transform.position + freeLocation, quaternion.identity);
+                    Instantiate(chunk, freeLocation, quaternion.identity);
                 }
             }
         }
@@ -106,32 +128,71 @@ public class ChunkManager : MonoBehaviour
     {
         if (!GameManager.Instance.isGameFail)
         {
-            List<Vector3> freeLocations = CheckWhatLocationsAreFree(bottomChunkLocations);
+            List<Vector3> freeLocations = CheckWhatLocationsAreFree(transform.position + new Vector3(0, -chunkOffset, 0));
             if (freeLocations.Count > 0)
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(chunk, transform.position + freeLocation, quaternion.identity);
+                    Instantiate(chunk, freeLocation, quaternion.identity);
                 }
             }
         }
     }
 
-    private List<Vector3> CheckWhatLocationsAreFree(Vector3[] locations)
+
+    private List<Vector3> CheckWhatLocationsAreFree(Vector3 startLocations)
     {
+        // Clear all previous debug visualizations
+        checkedLocations.Clear();
+
         List<Vector3> freeLocations = new List<Vector3>();
 
-        foreach (Vector3 location in locations)
+        foreach (Vector3 location in allChunkLocations)
         {
-            print(transform.position + location);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + location, 0.1f);
+            Vector2 combinedLocation = startLocations + location;
 
-            if (colliders.Length == 0 || !colliders.All(overlapCollider2D => overlapCollider2D.CompareTag("ChunkManager")))
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(combinedLocation, checkRadius);
+
+            bool isFree = colliders.Length == 0 || !colliders.Any(overlapCollider2D => overlapCollider2D.CompareTag("ChunkManager"));
+
+            checkedLocations.Add((combinedLocation, isFree, Time.time));
+
+            if (isFree)
             {
-                freeLocations.Add(location);
+                freeLocations.Add(combinedLocation);
             }
         }
 
         return freeLocations;
     }
+
+    private void OnDrawGizmos()
+    {
+        float currentTime = Time.time;
+        checkedLocations.RemoveAll(loc => currentTime - loc.timeStamp > 0.5);
+
+        foreach (var (position, isFree, _) in checkedLocations)
+        {
+            Gizmos.color = isFree ? freeLocationColor : occupiedLocationColor;
+            Gizmos.DrawSphere(position, gizmoSize);
+        }
+    }
+
+#if UNITY_EDITOR
+    [UnityEditor.CustomEditor(typeof(ChunkManager))]
+    public class ChunkManagerEditor : UnityEditor.Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+
+            ChunkManager chunkManager = (ChunkManager)target;
+
+            if (UnityEditor.EditorGUI.EndChangeCheck())
+            {
+                UnityEditor.SceneView.RepaintAll();
+            }
+        }
+    }
+#endif
 }

@@ -24,7 +24,6 @@ public class ChunkRandomGeneration : MonoBehaviour
                             * (1 + transform.position.x + transform.position.y)
                             + transform.position.y);
         Random.InitState(seed + uniqueValue * seed);
-        print(uniqueValue);
 
         for (int i = 0; i <= columns; i++)
         {

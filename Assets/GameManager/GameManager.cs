@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winText;
     [SerializeField] GameObject failText;
     [SerializeField] PlayerMovement playerMovement;
-    [SerializeField] private GasManager gasManager;
+    [SerializeField] GasManager gasManager;
 
     [HideInInspector] public bool isGameFail = false;
     [HideInInspector] public bool isGameWin = false;

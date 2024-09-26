@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Magnetized
   - Gas
+  - ChunkManager
   layers:
   - Default
   - TransparentFX

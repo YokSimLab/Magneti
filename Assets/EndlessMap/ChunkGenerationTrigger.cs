@@ -15,19 +15,19 @@ public class ChunkGenerationTrigger : MonoBehaviour
         {
             case ChunkManager.Direction.Top:
                 if (other.GetComponent<Rigidbody2D>().velocity.y > 0)
-                    chunkManager.OnLoadTop();
+                    chunkManager.OnLoadChunk(transform.position + new Vector3(0, ChunkManager.chunkOffset, 0));
                 break;
             case ChunkManager.Direction.Right:
                 if (other.GetComponent<Rigidbody2D>().velocity.x > 0)
-                    chunkManager.OnLoadRight();
+                    chunkManager.OnLoadChunk(transform.position + new Vector3(ChunkManager.chunkOffset, 0, 0));
                 break;
             case ChunkManager.Direction.Left:
                 if (other.GetComponent<Rigidbody2D>().velocity.x < 0)
-                    chunkManager.OnLoadLeft();
+                    chunkManager.OnLoadChunk(transform.position + new Vector3(-ChunkManager.chunkOffset, 0, 0));
                 break;
             case ChunkManager.Direction.Bottom:
                 if (other.GetComponent<Rigidbody2D>().velocity.y < 0)
-                    chunkManager.OnLoadBottom();
+                    chunkManager.OnLoadChunk(transform.position + new Vector3(0, -ChunkManager.chunkOffset, 0));
                 break;
         }
     }

@@ -675,6 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenuCanvasGroup: {fileID: 754137105}
   OptionsMenuUI: {fileID: 1146478840}
+  OptionsMenuAnimator: {fileID: 1146478846}
   OpenOptionsButton: {fileID: 1599066845}
   CloseButton: {fileID: 529971786}
 --- !u!1 &847597108
@@ -883,13 +884,15 @@ GameObject:
   - component: {fileID: 1146478843}
   - component: {fileID: 1146478842}
   - component: {fileID: 1146478845}
+  - component: {fileID: 1146478846}
+  - component: {fileID: 1146478847}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1146478841
 RectTransform:
   m_ObjectHideFlags: 0
@@ -985,6 +988,40 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 1
+--- !u!95 &1146478846
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146478840}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf4f36849deb68e41abce19cb0830fd1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1146478847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146478840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7524100c5bc317647ba1a56fda70c507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuCanvasGroup: {fileID: 754137105}
 --- !u!1001 &1153469729
 PrefabInstance:
   m_ObjectHideFlags: 0

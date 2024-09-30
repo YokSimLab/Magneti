@@ -56,7 +56,10 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         resetButton.interactable = true;
-        playerMovement.enabled = true;
+        if (playerMovement)
+        {
+            playerMovement.enabled = true;
+        }
     }
 
     private void Start()

@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 144;
         playButton.onClick.AddListener(OnPlayButtonClicked);
     }
 

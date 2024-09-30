@@ -69,6 +69,15 @@ public class GameManager : MonoBehaviour
             playerMovement.enabled = false;
             resetButton.interactable = false;
             tutorialMenu.OnStartTutorial();
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 0)
+        {
+            Application.targetFrameRate = 144;
+        }
+        else
+        {
+            Application.targetFrameRate = 60;
         }
     }
 

@@ -8,6 +8,8 @@ public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] CanvasGroup MainMenuCanvasGroup;
     [SerializeField] GameObject OptionsMenuUI;
+    [SerializeField] Animator OptionsMenuAnimator;
+
     [SerializeField] Button OpenOptionsButton;
     [SerializeField] Button CloseButton;
 
@@ -25,7 +27,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void OnCloseOptions()
     {
-        OptionsMenuUI.SetActive(false);
-        MainMenuCanvasGroup.interactable = true;
+        OptionsMenuAnimator.Play("OptionsMenuClose");
     }
 }

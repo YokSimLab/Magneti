@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class ChunkRandomGeneration : MonoBehaviour
 {
-    [Range(1, 133420)]
-    [SerializeField] private int seed = 0;
-
-    [SerializeField] private bool isSeedOn = false;
-
     [Range(0, 1)]
-    [SerializeField] private float minimumProbability = 0.9f;
+    [SerializeField] private float minimumProbability = 0.97f;
 
     [SerializeField] private ChunkManager chunk;
     [SerializeField] private GameObject magnet;
@@ -21,7 +16,7 @@ public class ChunkRandomGeneration : MonoBehaviour
 
     private void Awake()
     {
-        seed = Random.Range(1, 133420);
+        int seed = GameManager.Instance.seed;
 
         //Pairing Function
         int uniqueValue = (int)(0.5 * (transform.position.x + transform.position.y)
@@ -40,7 +35,7 @@ public class ChunkRandomGeneration : MonoBehaviour
                     {
                         Vector3 magnetPosition = new(transform.position.x + i - (columns / 2),
                                                         transform.position.y + j - (rows / 2), 0);
-                        Instantiate(magnet, magnetPosition, new Quaternion());
+                        Instantiate(magnet, magnetPosition, new Quaternion(), chunk.transform);
 
                         markedSpots.Add(new Vector2(i - 1, j + 1));
                         markedSpots.Add(new Vector2(i, j + 1));

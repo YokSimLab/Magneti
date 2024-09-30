@@ -32,9 +32,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject endScreen;
     private EndScreenScoreDisplay endScreenScoreDisplay;
     
+    [Range(1, 133420)]
+    [SerializeField] public int seed = 0;
+    
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
     [SerializeField] GameObject Chunk;
+    public GameObject chunkList;
 
     [SerializeField] Button resetButton;
     [SerializeField] TutorialMenu tutorialMenu;
@@ -55,7 +59,9 @@ public class GameManager : MonoBehaviour
 
         onGameContinue += GameContinue;
 
-        GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion());
+        seed = Random.Range(1, 133420);
+
+        GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion(), chunkList.transform);
         InitialChunk.GetComponent<ChunkManager>().OnLoadChunk(InitialChunk.transform.position);
         endScreenScoreDisplay = endScreen.GetComponent<EndScreenScoreDisplay>();
         

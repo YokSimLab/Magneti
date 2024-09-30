@@ -12,6 +12,7 @@ public class ChunkManager : MonoBehaviour
     private Vector3[] allChunkLocations;
 
     private float checkRadius = 0.1f;
+    private GameObject player;
     public static float chunkOffset = 10;
 
     public enum Direction
@@ -25,6 +26,7 @@ public class ChunkManager : MonoBehaviour
     private void Awake()
     {
         InitializeChunksLocations();
+        player = GameObject.FindWithTag("Player");
     }
 
     private void InitializeChunksLocations()
@@ -48,6 +50,7 @@ public class ChunkManager : MonoBehaviour
 
     public void OnLoadChunk(Vector3 chunkSpawnOrigin)
     {
+        RemoveDistantChunks();
         if (!GameManager.Instance.isGameFail)
         {
             List<Vector3> freeLocations = CheckWhatLocationsAreFree(chunkSpawnOrigin);
@@ -55,7 +58,7 @@ public class ChunkManager : MonoBehaviour
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(chunk, freeLocation, quaternion.identity);
+                    Instantiate(chunk, freeLocation, quaternion.identity, GameManager.Instance.chunkList.transform);
                 }
             }
         }
@@ -78,5 +81,20 @@ public class ChunkManager : MonoBehaviour
         }
 
         return freeLocations;
+    }
+
+    private void RemoveDistantChunks()
+    {
+        GameObject chunkList = GameManager.Instance.chunkList;
+        if (chunkList.transform.childCount > 0)
+        {
+            foreach (Transform chunk in chunkList.transform)
+            {
+                if (Vector2.Distance(player.transform.position, chunk.position) > chunkOffset * 2)
+                {
+                    Destroy(chunk.gameObject);
+                }
+            }
+        }
     }
 }

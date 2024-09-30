@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -30,21 +31,45 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gasCan3;
     [SerializeField] GameObject winText;
     [SerializeField] GameObject failText;
+
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
+
+    [SerializeField] Button resetButton;
+    [SerializeField] TutorialMenu tutorialMenu;
 
     [HideInInspector] public bool isGameFail = false;
     [HideInInspector] public bool isGameWin = false;
 
+    public delegate void GameContinueDelegate();
+
+    public static GameContinueDelegate onGameContinue;
 
     private void Awake()
     {
+        onGameContinue += GameContinue;
+
         _instance = this;
+    }
+
+    private void GameContinue()
+    {
+        Time.timeScale = 1;
+        resetButton.interactable = true;
+        playerMovement.enabled = true;
     }
 
     private void Start()
     {
         Application.targetFrameRate = 60;
+
+        if (PlayerPrefs.GetInt("SeenTutorial", 1) == 1)
+        {
+            Time.timeScale = 0;
+            playerMovement.enabled = false;
+            resetButton.interactable = false;
+            tutorialMenu.OnStartTutorial();
+        }
     }
 
     private void Update()

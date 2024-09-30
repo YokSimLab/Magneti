@@ -18,6 +18,8 @@ public class MainMenu : MonoBehaviour
     private void OnPlayButtonClicked()
     {
         //Yes, unity sucks, and this is the way to do it.
+        //Somewhat agree
+
         SceneManager.LoadScene("EndlessScene");
     }
 }

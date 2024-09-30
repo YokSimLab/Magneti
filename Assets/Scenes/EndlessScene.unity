@@ -3733,10 +3733,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4633690971931334798, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6264415520823084803, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

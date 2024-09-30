@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winText;
     [SerializeField] GameObject failText;
 
+    [Range(1, 133420)]
+    [SerializeField] public int seed = 0;
+
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
     [SerializeField] GameObject Chunk;
@@ -48,6 +51,8 @@ public class GameManager : MonoBehaviour
         _instance = this;
 
         onGameContinue += GameContinue;
+
+        seed = Random.Range(1, 133420);
 
         GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion(), chunkList.transform);
         InitialChunk.GetComponent<ChunkManager>().OnLoadChunk(InitialChunk.transform.position);
@@ -106,8 +111,8 @@ public class GameManager : MonoBehaviour
 
     public void FailGame()
     {
-        isGameFail = true;
-        failText.SetActive(true);
-        playerMovement.enabled = false;
+        //isGameFail = true;
+        //failText.SetActive(true);
+        //playerMovement.enabled = false;
     }
 }

@@ -27,6 +27,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void OnCloseOptions()
     {
-        OptionsMenuAnimator.Play("OptionsMenuClose");
+        OptionsMenuAnimator.SetTrigger("OnClose");
     }
 }

@@ -158,7 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099736ebd9c25364fa5dc3b85cf27a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gasAmount: 100
+  batteryAmount: 100
+  generationRadius: 20
 --- !u!61 &5370498961743595141
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seed: 36476
   isSeedOn: 0
-  minimumProbability: 0.97
+  minimumProbability: 0.985
   chunk: {fileID: 2877401654065343166}
   magnet: {fileID: 8797443455580311339, guid: 012a7b7e81ea8234eb09bdd28e3abe77, type: 3}
   rows: 10
@@ -378,7 +378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunk: {fileID: 8385240334416708044}
-  checkRadius: 1
 --- !u!61 &6353645740201067566
 BoxCollider2D:
   m_ObjectHideFlags: 0

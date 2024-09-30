@@ -132,6 +132,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void FailGame()
     {
         int highestScore = Mathf.Max(PlayerPrefs.GetInt("highScore", 0), maxDistanceFromCenter);

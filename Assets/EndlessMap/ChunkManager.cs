@@ -8,11 +8,11 @@ using UnityEngine;
 public class ChunkManager : MonoBehaviour
 {
     [SerializeField] private GameObject chunk;
-    [SerializeField] private float checkRadius = 0.1f;
 
     private Vector3[] allChunkLocations;
 
-    public static float chunkOffset = 5;
+    private float checkRadius = 0.1f;
+    public static float chunkOffset = 10;
 
     public enum Direction
     {

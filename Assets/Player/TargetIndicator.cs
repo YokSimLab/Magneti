@@ -18,23 +18,21 @@ public class TargetIndicator : MonoBehaviour
     {
         transform.position = player.transform.position;
 
-        Vector3 closestMagnet = FindNearestMagnet(transform.position).transform.position;
+        Vector3 closestMagnet = FindNearestBattery(transform.position).transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, (closestMagnet - transform.position).normalized);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationLerp);
     }
 
-    Magnet FindNearestMagnet(Vector3 position)
+    Gas FindNearestBattery(Vector3 position)
     {
-        List<Magnet> magnets = new List<Magnet>(FindObjectsOfType<Magnet>());
+        List<Gas> batteries = new List<Gas>(FindObjectsOfType<Gas>());
 
-        if (magnets.Count == 0)
+        if (batteries.Count == 0)
         {
             return null;
         }
 
-        magnets.Remove(player.GetComponent<Magnet>());
-
-        Magnet nearestObject = magnets
+        Gas nearestObject = batteries
             .OrderBy(obj => Vector3.Distance(position, obj.transform.position))
             .First();
 

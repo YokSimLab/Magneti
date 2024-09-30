@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GasManager : MonoBehaviour
 {
-    [SerializeField] float maxGas;
+    public float maxGas;
+    public float gasRemoveRate;
     [SerializeField] float currentGas;
-    [SerializeField] public float gasRemoveRate;
     [SerializeField] Slider gasSlider;
 
     public float CurrentGas

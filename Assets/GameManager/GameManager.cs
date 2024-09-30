@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
     [SerializeField] GameObject Chunk;
+    public GameObject chunkList;
 
     [SerializeField] Button resetButton;
     [SerializeField] TutorialMenu tutorialMenu;
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         onGameContinue += GameContinue;
 
-        GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion());
+        GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion(), chunkList.transform);
         InitialChunk.GetComponent<ChunkManager>().OnLoadChunk(InitialChunk.transform.position);
     }
 

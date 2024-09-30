@@ -25,21 +25,20 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    [SerializeField] GameObject gasCan1;
-    [SerializeField] GameObject gasCan2;
-    [SerializeField] GameObject gasCan3;
     [SerializeField] GameObject winText;
     [SerializeField] GameObject failText;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
+    [SerializeField] GameObject Chunk;
 
     [HideInInspector] public bool isGameFail = false;
-    [HideInInspector] public bool isGameWin = false;
-
 
     private void Awake()
     {
         _instance = this;
+
+        GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion());
+        InitialChunk.GetComponent<ChunkManager>().OnLoadChunk(InitialChunk.transform.position);
     }
 
     private void OnLevelWasLoaded(int level)
@@ -57,11 +56,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         TryResetGame();
-
-        if (!(gasCan1 || gasCan2 || gasCan3))
-        {
-            WonGame();
-        }
     }
 
     private void TryResetGame()
@@ -77,24 +71,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void WonGame()
-    {
-        if (!isGameFail)
-        {
-            isGameWin = true;
-            winText.SetActive(true);
-            gasManager.CurrentGas = 100;
-            gasManager.gasRemoveRate = 0;
-        }
-    }
-
     public void FailGame()
     {
-        if (!isGameWin)
-        {
-            isGameFail = true;
-            failText.SetActive(true);
-            playerMovement.enabled = false;
-        }
+        isGameFail = true;
+        failText.SetActive(true);
+        playerMovement.enabled = false;
     }
 }

@@ -21,16 +21,7 @@ public class ChunkRandomGeneration : MonoBehaviour
 
     private void Awake()
     {
-        isSeedOn = SeedManager.Instance.isSeedOn;
-
-        if (isSeedOn)
-        {
-            seed = SeedManager.Instance.seed;
-        }
-        else
-        {
-            seed = Random.Range(1, 133420);
-        }
+        seed = Random.Range(1, 133420);
 
         //Pairing Function
         int uniqueValue = (int)(0.5 * (transform.position.x + transform.position.y)

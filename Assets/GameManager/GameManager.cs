@@ -61,14 +61,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 60;
-
         if (PlayerPrefs.GetInt("SeenTutorial", 1) == 1)
         {
             Time.timeScale = 0;
             playerMovement.enabled = false;
             resetButton.interactable = false;
             tutorialMenu.OnStartTutorial();
+        }
+    }
+
     private void OnLevelWasLoaded(int level)
     {
         if (level == 0)

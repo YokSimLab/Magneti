@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        onGameContinue += GameContinue;
-
         _instance = this;
+
+        onGameContinue += GameContinue;
 
         GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion());
         InitialChunk.GetComponent<ChunkManager>().OnLoadChunk(InitialChunk.transform.position);

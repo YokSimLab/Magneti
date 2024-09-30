@@ -42,9 +42,16 @@ public class GameManager : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
+    private void OnLevelWasLoaded(int level)
     {
-        Application.targetFrameRate = 60;
+        if (level == 0)
+        {
+            Application.targetFrameRate = 144;
+        }
+        else
+        {
+            Application.targetFrameRate = 60;
+        }
     }
 
     private void Update()

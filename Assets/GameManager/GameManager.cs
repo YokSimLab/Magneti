@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-
 
 public class GameManager : MonoBehaviour
 {
@@ -136,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     public void FailGame()
     {
-        int highestScore = math.max(PlayerPrefs.GetInt("highScore", 0), maxDistanceFromCenter);
+        int highestScore = Mathf.Max(PlayerPrefs.GetInt("highScore", 0), maxDistanceFromCenter);
         PlayerPrefs.SetInt("highScore", highestScore);
         endScreenScoreDisplay.DisplayScores(maxDistanceFromCenter, highestScore);
         

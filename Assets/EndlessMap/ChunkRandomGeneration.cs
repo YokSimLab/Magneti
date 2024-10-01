@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class ChunkRandomGeneration : MonoBehaviour
 {
-    [Range(0, 1)]
-    [SerializeField] private float minimumProbability = 0.97f;
-
     [SerializeField] private ChunkManager chunk;
     [SerializeField] private GameObject magnet;
-    [SerializeField] private float rows = 5;
-    [SerializeField] private float columns = 5;
+    [SerializeField] private float rows = 10;
+    [SerializeField] private float columns = 10;
+    [SerializeField] private float averageMagnetsPerChunk = 3;
+
+    private float minimumProbability = 0.97f;
 
     private readonly List<Vector2> markedSpots = new List<Vector2>();
 
+    private int randomState = -1;
+
     private void Awake()
     {
+        minimumProbability = 1 - (2 * averageMagnetsPerChunk / (rows * columns));
+
         int uniqueValue = (int)(0.5 * (transform.position.x + transform.position.y)
             * (1 + transform.position.x + transform.position.y)
             + transform.position.y);
 
-        int randomState;
         if ((randomState = TryGetChunkRandomState(uniqueValue)) == -1)
         {
             randomState = AddChunkRandomState(uniqueValue);
@@ -45,25 +48,24 @@ public class ChunkRandomGeneration : MonoBehaviour
         return randomState;
     }
 
-    private void GenerateMagnets(int randomState)
+    private void GenerateMagnets(int finalRandomState)
     {
-        Random.InitState(randomState);
+        Random.InitState(finalRandomState);
 
         for (int i = 0; i <= columns; i++)
         {
             for (int j = 0; j <= rows; j++)
             {
-                if (!markedSpots.Contains(new Vector2(i, j)))
+                Vector3 magnetPosition = new(transform.position.x + i - (columns / 2),
+                                transform.position.y + j - (rows / 2), 0);
+
+                if (!markedSpots.Contains(new Vector2(i, j)) &&
+                    Physics2D.OverlapCircleAll(magnetPosition, 1.5f).Length == 0)
                 {
                     float probability = Random.Range(0f, 1f);
 
                     if (probability >= minimumProbability)
                     {
-                        Vector3 magnetPosition = new(transform.position.x + i - (columns / 2),
-                                                        transform.position.y + j - (rows / 2), 0);
-
-                        Debug.Log(" ");
-
                         Instantiate(magnet, magnetPosition, new Quaternion(), gameObject.transform);
 
                         markedSpots.Add(new Vector2(i - 1, j + 1));

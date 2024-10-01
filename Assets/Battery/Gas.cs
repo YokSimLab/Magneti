@@ -33,7 +33,7 @@ public class Gas : MonoBehaviour
         do
         {
             randomPointOnArc = GetRandomPointOnArcInDirection(angleInRad, arcAngle);
-            colliders = Physics2D.OverlapCircleAll(randomPointOnArc, .2f);
+            colliders = Physics2D.OverlapCircleAll(randomPointOnArc, 1.5f);
 
         } while (colliders.Length != 0);
 

@@ -66,7 +66,7 @@ public class ChunkRandomGeneration : MonoBehaviour
 
                     if (probability >= minimumProbability)
                     {
-                        Instantiate(magnet, magnetPosition, new Quaternion(), gameObject.transform);
+                        Instantiate(magnet, magnetPosition, Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)), gameObject.transform);
 
                         markedSpots.Add(new Vector2(i - 1, j + 1));
                         markedSpots.Add(new Vector2(i, j + 1));

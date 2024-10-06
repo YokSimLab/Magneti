@@ -113,8 +113,8 @@ public class GameManager : MonoBehaviour
 
     public void FailGame()
     {
-        //isGameFail = true;
-        //failText.SetActive(true);
-        //playerMovement.enabled = false;
+        isGameFail = true;
+        failText.SetActive(true);
+        playerMovement.enabled = false;
     }
 }

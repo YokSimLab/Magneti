@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class ChunkManager : MonoBehaviour
 {
-    [SerializeField] private GameObject chunk;
-
     private Vector3[] allChunkLocations;
 
     private float checkRadius = 0.1f;
@@ -58,7 +56,7 @@ public class ChunkManager : MonoBehaviour
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(chunk, freeLocation, quaternion.identity, GameManager.Instance.chunkList.transform);
+                    Instantiate(GameManager.Instance.chunk, freeLocation, quaternion.identity, GameManager.Instance.chunkList.transform);
                 }
             }
         }

@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
-    [SerializeField] GameObject Chunk;
+    public GameObject chunk;
     public GameObject chunkList;
 
     [SerializeField] Button resetButton;
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
 
     public static GameContinueDelegate onGameContinue;
 
+    public Dictionary<int, int> chunkUniqueValueToRandomState = new();
+
     private void Awake()
     {
         _instance = this;
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
 
         seed = Random.Range(1, 133420);
 
-        GameObject InitialChunk = Instantiate(Chunk, new Vector3(0, 0, 0), new Quaternion(), chunkList.transform);
+        GameObject InitialChunk = Instantiate(chunk, new Vector3(0, 0, 0), new Quaternion(), chunkList.transform);
         InitialChunk.GetComponent<ChunkManager>().OnLoadChunk(InitialChunk.transform.position);
         endScreenScoreDisplay = endScreen.GetComponent<EndScreenScoreDisplay>();
         

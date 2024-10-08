@@ -46,7 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winText: {fileID: 0}
   failText: {fileID: 0}
+  seed: 0
   playerMovement: {fileID: 0}
   gasManager: {fileID: 0}
-  Chunk: {fileID: 8385240334416708044, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
+  chunk: {fileID: 8385240334416708044, guid: 60cb5e2362bf9d344b3c5a5cad28e989, type: 3}
+  chunkList: {fileID: 0}
+  resetButton: {fileID: 0}
+  tutorialMenu: {fileID: 0}
   isGameFail: 0

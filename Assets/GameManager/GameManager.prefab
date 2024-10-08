@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1326954c53b60d048b3eb6a0d37d4b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winText: {fileID: 0}
-  failText: {fileID: 0}
+  endScreen: {fileID: 0}
   seed: 0
   playerMovement: {fileID: 0}
   gasManager: {fileID: 0}
@@ -53,4 +52,8 @@ MonoBehaviour:
   chunkList: {fileID: 0}
   resetButton: {fileID: 0}
   tutorialMenu: {fileID: 0}
+  hideableObjects:
+  - {fileID: 0}
+  - {fileID: 0}
   isGameFail: 0
+  distanceFromCenter: 0

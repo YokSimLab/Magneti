@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     public GameObject chunk;
     public GameObject chunkList;
 
-    [SerializeField] Button resetButton;
     [SerializeField] TutorialMenu tutorialMenu;
     [SerializeField] GameObject[] hideableObjects;
     [HideInInspector] public bool isGameFail = false;
@@ -71,7 +70,6 @@ public class GameManager : MonoBehaviour
     private void GameContinue()
     {
         Time.timeScale = 1;
-        resetButton.interactable = true;
         if (playerMovement)
         {
             playerMovement.enabled = true;
@@ -84,7 +82,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             playerMovement.enabled = false;
-            resetButton.interactable = false;
             tutorialMenu.OnStartTutorial();
         }
     }
@@ -103,16 +100,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        TryResetGame();
         UpdateScore();
-    }
-
-    private void TryResetGame()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetGame();
-        }
     }
 
     private void UpdateScore()

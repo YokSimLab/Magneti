@@ -1924,6 +1924,10 @@ PrefabInstance:
       propertyPath: cineMachineCamera
       value: 
       objectReference: {fileID: 1569537656}
+    - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
+      propertyPath: lastPathPointThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3891687104225742893, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
       propertyPath: m_Name
       value: PathTracker

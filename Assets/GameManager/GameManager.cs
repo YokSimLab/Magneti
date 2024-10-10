@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] GasManager gasManager;
     [SerializeField] private PathTracker pathTracker;
+    [SerializeField] private CinemachineVirtualCamera cineMachineCamera;
     public GameObject chunk;
     public GameObject chunkList;
 
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        cineMachineCamera.m_Lens.OrthographicSize = 7.5f;
 
         onGameContinue += GameContinue;
 
@@ -131,14 +134,18 @@ public class GameManager : MonoBehaviour
     {
         if (!isGameFail)
         {
+            if (pathTracker)
+            {
+                pathTracker.ShowTrackerLine();
+            }
+
+            isGameFail = true;
             int highestScore = Mathf.Max(PlayerPrefs.GetInt("highScore", 0), maxDistanceFromCenter);
             PlayerPrefs.SetInt("highScore", highestScore);
             endScreenScoreDisplay.DisplayScores(maxDistanceFromCenter, highestScore);
 
-            isGameFail = true;
             endScreen.SetActive(true);
             playerMovement.enabled = false;
-            pathTracker.ShowTrackerLine();
 
             foreach (GameObject gameObject in hideableObjects)
             {

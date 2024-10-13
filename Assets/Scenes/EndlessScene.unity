@@ -2351,6 +2351,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1166754135}
     - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
+      propertyPath: hideableObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 951631240}
+    - target: {fileID: 5032818082957721650, guid: 48120ac1037ef2747b909913c9cac5fa, type: 3}
       propertyPath: hideableObjects.Array.data[1]
       value: 
       objectReference: {fileID: 1476402933}

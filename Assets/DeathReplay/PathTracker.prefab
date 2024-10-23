@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670a9a0ed58e7384e89a0704643903f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerLine: {fileID: 8259213730798107640, guid: 72373f5b42e470e4fbd10d31cd72ccef, type: 3}
-  lastPathPointThreshold: 0.5
+  playerTransform: {fileID: 0}
+  trackerLine: {fileID: 0}
+  lastPathPointThreshold: 0.1
+  cineMachineCamera: {fileID: 0}

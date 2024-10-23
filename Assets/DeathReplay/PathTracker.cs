@@ -12,7 +12,6 @@ public class PathTracker : MonoBehaviour
     [SerializeField] private float lastPathPointThreshold = .5f;
     [SerializeField] private CinemachineVirtualCamera cineMachineCamera;
 
-
     private List<Vector3> pathList;
 
     private void Awake()
@@ -83,7 +82,7 @@ public class PathTracker : MonoBehaviour
         // Adjust this values to make the DeathReplay faster or slower
         const float baseSpeed = 0.023f;
         const float speedUpPhase = 0.75f;
-        const float slowDownPhase = 0.15f;
+        const float slowDownPhase = 0.25f;
         const float maxSpeedMultiplier = 0.5f;
         const float minSpeedMultiplier = 0.05f;
 

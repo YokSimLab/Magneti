@@ -1640,11 +1640,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!212 &1541976316 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6175823209794468207, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
-  m_PrefabInstance: {fileID: 8975987309164525339}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1569537655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,25 +1905,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
-      propertyPath: deathImage
-      value: 
-      objectReference: {fileID: 142418049}
-    - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
       propertyPath: trackerLine
       value: 
       objectReference: {fileID: 936806613}
-    - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
-      propertyPath: playerSprite
-      value: 
-      objectReference: {fileID: 1541976316}
-    - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
-      propertyPath: playerCollider
-      value: 
-      objectReference: {fileID: 1993028282}
     - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
       propertyPath: playerTransform
       value: 
@@ -1937,10 +1916,6 @@ PrefabInstance:
       propertyPath: cineMachineCamera
       value: 
       objectReference: {fileID: 1569537656}
-    - target: {fileID: -2133883139781823684, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
-      propertyPath: lastPathPointThreshold
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3891687104225742893, guid: 02f7df13d6fc0914590f3ab0ec3e762a, type: 3}
       propertyPath: m_Name
       value: PathTracker
@@ -2455,11 +2430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7431e593e586c41abd3a26117f4cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &1993028282 stripped
-PolygonCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5799052815301694227, guid: 2b6c6e9202fa3814e9ede11d4a66fb48, type: 3}
-  m_PrefabInstance: {fileID: 8975987309164525339}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2141573980
 GameObject:
   m_ObjectHideFlags: 0

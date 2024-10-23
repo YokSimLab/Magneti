@@ -18,7 +18,7 @@ public class GasManager : MonoBehaviour
 
     void Update()
     {
-        // RemoveGas();
+        RemoveGas();
     }
 
     public void AddGas(float gasAmount)

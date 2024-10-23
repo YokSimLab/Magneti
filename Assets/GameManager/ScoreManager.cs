@@ -16,6 +16,6 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         int distance = gameManager.distanceFromCenter;
-        scoreText.SetText(distance + "m");
+        scoreText.SetText(distance + "M");
     }
 }

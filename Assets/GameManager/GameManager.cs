@@ -45,8 +45,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool isGameFail = false;
     [HideInInspector] public int distanceFromCenter = 0;
     [HideInInspector] private int maxDistanceFromCenter = 0;
-
-    private Vector3 initialLocation;
+    [HideInInspector] private Vector3 initialLocation;
 
     public delegate void GameContinueDelegate();
 
@@ -132,25 +131,24 @@ public class GameManager : MonoBehaviour
 
     public void FailGame()
     {
-        if (!isGameFail)
+        if (isGameFail) return;
+        
+        if (pathTracker)
         {
-            if (pathTracker)
-            {
-                pathTracker.ShowTrackerLine();
-            }
+            pathTracker.ShowDeathReplay();
+        }
 
-            isGameFail = true;
-            int highestScore = Mathf.Max(PlayerPrefs.GetInt("highScore", 0), maxDistanceFromCenter);
-            PlayerPrefs.SetInt("highScore", highestScore);
-            endScreenScoreDisplay.DisplayScores(maxDistanceFromCenter, highestScore);
+        isGameFail = true;
+        int highestScore = Mathf.Max(PlayerPrefs.GetInt("highScore", 0), maxDistanceFromCenter);
+        PlayerPrefs.SetInt("highScore", highestScore);
+        endScreenScoreDisplay.DisplayScores(maxDistanceFromCenter, highestScore);
 
-            endScreen.SetActive(true);
-            playerMovement.enabled = false;
+        endScreen.SetActive(true);
+        playerMovement.enabled = false;
 
-            foreach (GameObject gameObject in hideableObjects)
-            {
-                gameObject.SetActive(false);
-            }
+        foreach (GameObject gameObject in hideableObjects)
+        {
+            gameObject.SetActive(false);
         }
     }
 }

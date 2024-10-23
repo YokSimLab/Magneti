@@ -49,15 +49,13 @@ public class ChunkManager : MonoBehaviour
     public void OnLoadChunk(Vector3 chunkSpawnOrigin)
     {
         RemoveDistantChunks();
-        if (!GameManager.Instance.isGameFail)
+
+        List<Vector3> freeLocations = CheckWhatLocationsAreFree(chunkSpawnOrigin);
+        if (freeLocations.Count > 0)
         {
-            List<Vector3> freeLocations = CheckWhatLocationsAreFree(chunkSpawnOrigin);
-            if (freeLocations.Count > 0)
+            foreach (Vector3 freeLocation in freeLocations)
             {
-                foreach (Vector3 freeLocation in freeLocations)
-                {
-                    Instantiate(GameManager.Instance.chunk, freeLocation, quaternion.identity, GameManager.Instance.chunkList.transform);
-                }
+                Instantiate(GameManager.Instance.chunk, freeLocation, quaternion.identity, GameManager.Instance.chunkList.transform);
             }
         }
     }

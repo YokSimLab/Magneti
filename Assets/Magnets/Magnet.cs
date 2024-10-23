@@ -15,6 +15,8 @@ public class Magnet : MonoBehaviour
     private HashSet<Magnet> pulledMagnetsInField;
     private Rigidbody2D myRigidBody2D;
 
+    [SerializeField] bool UIMagnet = false;
+
     public HashSet<Magnet> PulledMagnetsInField
     {
         get => pulledMagnetsInField;
@@ -41,6 +43,11 @@ public class Magnet : MonoBehaviour
     public Vector3 CalcMagneticForce(Magnet attractor, Magnet target)
     {
         float magneticForcesProduct = attractor.magneticForce * target.magneticForce;
+
+        if (UIMagnet)
+        {
+            magneticForcesProduct = magneticForcesProduct < 0 ? magneticForcesProduct : -magneticForcesProduct;
+        }
 
         Vector3 difference = attractor.transform.position - target.transform.position;
         float distance = difference.magnitude;

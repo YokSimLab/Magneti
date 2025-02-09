@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject pullingMagnet;
+
     private Vector3 lastVelocityDirection = Vector3.up;
 
     [SerializeField] float velocityAnimationChangeMultiplier = 0.1f;
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         GasManager gas = GetComponent<GasManager>();
         if (((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0)) && gas && gas.CurrentGas > 0)
         {
+            pullingMagnet = null;
             foreach (Magnet magnet in FindObjectsOfType<Magnet>())
             {
                 magnet.PulledMagnetsInField.Remove(GetComponent<Magnet>());
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             if (nearestMagnet != null)
             {
                 nearestMagnet.PulledMagnetsInField.Add(GetComponent<Magnet>());
+                pullingMagnet = nearestMagnet.gameObject;
             }
         }
     }

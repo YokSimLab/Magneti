@@ -27,6 +27,8 @@ public class Magnet : MonoBehaviour
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         PulledMagnetsInField = new HashSet<Magnet> { };
+
+        GameManager.Instance.OnNewTarget(gameObject);
     }
 
     private void Update()
@@ -60,7 +62,8 @@ public class Magnet : MonoBehaviour
         Vector3 forceVector = forceDirection * forceMagnitude;
         if (target.GetComponent<Rigidbody2D>().velocity.magnitude > 1)
         {
-            forceVector = forceDirection * forceMagnitude * (Mathf.Sqrt(target.GetComponent<Rigidbody2D>().velocity.magnitude));
+            forceVector = forceDirection * forceMagnitude *
+                          (Mathf.Sqrt(target.GetComponent<Rigidbody2D>().velocity.magnitude));
         }
 
         return forceVector * Time.deltaTime;
@@ -71,6 +74,14 @@ public class Magnet : MonoBehaviour
         if (myRigidBody2D)
         {
             myRigidBody2D.AddForce(magneticForceToApply);
+        }
+    }
+
+    public void OnDestroy()
+    {
+        if (this && gameObject)
+        {
+            GameManager.Instance.OnTargetRemoved(gameObject);
         }
     }
 

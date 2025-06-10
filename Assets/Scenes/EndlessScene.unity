@@ -2476,6 +2476,10 @@ PrefabInstance:
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 650975236}
+    - target: {fileID: 4437745841651923409, guid: e04eecab71a9df743b3538957a6ecf49, type: 3}
+      propertyPath: targetIndicatorDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8320295197407479280, guid: e04eecab71a9df743b3538957a6ecf49, type: 3}
       propertyPath: m_Name
       value: MagnetIndicatorManager

@@ -151,6 +151,9 @@ public class GameManager : MonoBehaviour
 
     public void OnTargetRemoved(GameObject target)
     {
-        targetIndicatorManager.OnRemoveTarget(target);
+        if (target)
+        {
+            targetIndicatorManager.OnRemoveTarget(target);
+        }
     }
 }

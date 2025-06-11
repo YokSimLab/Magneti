@@ -11,6 +11,7 @@ public class TargetIndicator : MonoBehaviour
     private Vector2 currentScale;
     float maxSpriteWidth = 0;
     float maxSpriteHeight = 0;
+    private int type;
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class TargetIndicator : MonoBehaviour
 
     public void SetIndicatorType(GameObject target)
     {
-        int type = target.GetComponent<Magnet>() ? 0 : 1;
+        type = target.GetComponent<Magnet>() ? 0 : 1;
         child.GetComponent<SpriteRenderer>().sprite = type == 0 ? satelliteSprite : batterySprite;
     }
 
@@ -38,7 +39,7 @@ public class TargetIndicator : MonoBehaviour
     public void SetSize(float distance)
     {
         distance = Mathf.Abs(distance);
-        distance = Mathf.Clamp(distance, 0, 7);
+        distance = Mathf.Clamp(distance, 0, type == 0 ? 7 : 5);
         float xScale = (1 - distance / 10) * maxScale.x;
         float yScale = (1 - distance / 10) * maxScale.y;
 

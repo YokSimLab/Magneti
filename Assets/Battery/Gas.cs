@@ -1,13 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Gas : MonoBehaviour
 {
     [SerializeField] float batteryAmount;
     [SerializeField] float generationRadius = 5;
+
+    private void Start()
+    {
+        GameManager.Instance.OnNewTarget(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +25,8 @@ public class Gas : MonoBehaviour
         }
 
         GenerateNewGas();
+
+        GameManager.Instance.OnTargetRemoved(gameObject);
         Destroy(gameObject);
     }
 
@@ -34,10 +43,9 @@ public class Gas : MonoBehaviour
         {
             randomPointOnArc = GetRandomPointOnArcInDirection(angleInRad, arcAngle);
             colliders = Physics2D.OverlapCircleAll(randomPointOnArc, 1.5f);
-
         } while (colliders.Length != 0);
 
-        Instantiate(gameObject, randomPointOnArc, new Quaternion());
+        GameManager.Instance.OnNewTarget(Instantiate(gameObject, randomPointOnArc, new Quaternion()));
     }
 
     Vector3 GetRandomPointOnArcInDirection(float directionInRad, float arcAngle)

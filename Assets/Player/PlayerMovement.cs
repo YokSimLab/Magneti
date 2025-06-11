@@ -24,21 +24,22 @@ public class PlayerMovement : MonoBehaviour
     private void OnClick()
     {
         GasManager gas = GetComponent<GasManager>();
-        if (((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0)) && gas && gas.CurrentGas > 0)
+        if (((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0)) &&
+            gas && gas.CurrentGas > 0)
         {
             pullingMagnet = null;
             foreach (Magnet magnet in FindObjectsOfType<Magnet>())
             {
-                magnet.PulledMagnetsInField.Remove(GetComponent<Magnet>());
+                magnet.RemoveMagnet(GetComponent<Magnet>());
             }
 
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
 
             Magnet nearestMagnet = FindNearestMagnet(mousePosition);
-            if (nearestMagnet != null)
+            if (nearestMagnet)
             {
-                nearestMagnet.PulledMagnetsInField.Add(GetComponent<Magnet>());
+                nearestMagnet.AddMagnet(GetComponent<Magnet>());
                 pullingMagnet = nearestMagnet.gameObject;
             }
         }

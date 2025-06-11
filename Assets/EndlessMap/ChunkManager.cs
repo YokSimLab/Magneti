@@ -56,7 +56,8 @@ public class ChunkManager : MonoBehaviour
             {
                 foreach (Vector3 freeLocation in freeLocations)
                 {
-                    Instantiate(GameManager.Instance.chunk, freeLocation, quaternion.identity, GameManager.Instance.chunkList.transform);
+                    Instantiate(GameManager.Instance.chunk, freeLocation, quaternion.identity,
+                        GameManager.Instance.chunkList.transform);
                 }
             }
         }
@@ -72,7 +73,8 @@ public class ChunkManager : MonoBehaviour
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(combinedLocation, checkRadius);
 
-            if (colliders.Length == 0 || !colliders.Any(overlapCollider2D => overlapCollider2D.CompareTag("ChunkManager")))
+            if (colliders.Length == 0 ||
+                !colliders.Any(overlapCollider2D => overlapCollider2D.CompareTag("ChunkManager")))
             {
                 freeLocations.Add(combinedLocation);
             }
@@ -90,6 +92,15 @@ public class ChunkManager : MonoBehaviour
             {
                 if (Vector2.Distance(player.transform.position, chunk.position) > chunkOffset * 2)
                 {
+                    GameObject chunkMagnets = chunk.GetComponentInChildren<ChunkRandomGeneration>().gameObject;
+                    if (chunkMagnets && chunkMagnets.transform.childCount > 0)
+                    {
+                        foreach (Transform magnet in chunkMagnets.transform)
+                        {
+                            GameManager.Instance.OnTargetRemoved(magnet.gameObject);
+                        }
+                    }
+
                     Destroy(chunk.gameObject);
                 }
             }

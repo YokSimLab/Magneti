@@ -21,8 +21,8 @@ public class ChunkRandomGeneration : MonoBehaviour
         minimumProbability = 1 - (2 * averageMagnetsPerChunk / (rows * columns));
 
         int uniqueValue = (int)(0.5 * (transform.position.x + transform.position.y)
-            * (1 + transform.position.x + transform.position.y)
-            + transform.position.y);
+                                    * (1 + transform.position.x + transform.position.y)
+                                + transform.position.y);
 
         if ((randomState = TryGetChunkRandomState(uniqueValue)) == -1)
         {
@@ -35,7 +35,8 @@ public class ChunkRandomGeneration : MonoBehaviour
 
     private int TryGetChunkRandomState(int uniqueValue)
     {
-        bool doesExist = GameManager.Instance.chunkUniqueValueToRandomState.TryGetValue(uniqueValue, out int randomState);
+        bool doesExist =
+            GameManager.Instance.chunkUniqueValueToRandomState.TryGetValue(uniqueValue, out int randomState);
 
         return doesExist ? randomState : -1;
     }
@@ -57,7 +58,7 @@ public class ChunkRandomGeneration : MonoBehaviour
             for (int j = 0; j <= rows; j++)
             {
                 Vector3 magnetPosition = new(transform.position.x + i - (columns / 2),
-                                transform.position.y + j - (rows / 2), 0);
+                    transform.position.y + j - (rows / 2), 0);
 
                 if (!markedSpots.Contains(new Vector2(i, j)) &&
                     Physics2D.OverlapCircleAll(magnetPosition, 1.5f).Length == 0)
@@ -66,7 +67,11 @@ public class ChunkRandomGeneration : MonoBehaviour
 
                     if (probability >= minimumProbability)
                     {
-                        Instantiate(magnet, magnetPosition, Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)), gameObject.transform);
+                        GameObject newMagnet = Instantiate(magnet, magnetPosition,
+                            Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f)),
+                            gameObject.transform);
+
+                        GameManager.Instance.OnNewTarget(newMagnet);
 
                         markedSpots.Add(new Vector2(i - 1, j + 1));
                         markedSpots.Add(new Vector2(i, j + 1));

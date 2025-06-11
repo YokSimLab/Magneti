@@ -15,6 +15,8 @@ public class Magnet : MonoBehaviour
     private HashSet<Magnet> pulledMagnetsInField;
     private Rigidbody2D myRigidBody2D;
 
+    private GameObject magneticEffect;
+
     [SerializeField] bool UIMagnet = false;
 
     public HashSet<Magnet> PulledMagnetsInField
@@ -27,6 +29,12 @@ public class Magnet : MonoBehaviour
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         PulledMagnetsInField = new HashSet<Magnet> { };
+
+        magneticEffect = GetComponentInChildren<Animator>()?.gameObject;
+        if (magneticEffect)
+        {
+            magneticEffect.SetActive(false);
+        }
     }
 
     private void Update()
@@ -37,6 +45,46 @@ public class Magnet : MonoBehaviour
         {
             Vector3 magneticForceToApply = CalcMagneticForce(magnet, this);
             magnet.ApplyMagneticForce(magneticForceToApply);
+        }
+    }
+
+    public void AddMagnet(Magnet pulledMagnet)
+    {
+        if (this == pulledMagnet) return;
+
+        if (pulledMagnet.gameObject.tag.Equals("Player"))
+        {
+            StartSelectedMagnetAnimation();
+        }
+
+        PulledMagnetsInField.Add(pulledMagnet);
+    }
+
+    public void RemoveMagnet(Magnet pulledMagnet)
+    {
+        if (!PulledMagnetsInField.Contains(pulledMagnet)) return;
+
+        if (pulledMagnet.gameObject.tag.Equals("Player"))
+        {
+            EndSelectedMagnetAnimation();
+        }
+
+        PulledMagnetsInField.Remove(pulledMagnet);
+    }
+
+    private void StartSelectedMagnetAnimation()
+    {
+        if (magneticEffect)
+        {
+            magneticEffect.SetActive(true);
+        }
+    }
+
+    private void EndSelectedMagnetAnimation()
+    {
+        if (magneticEffect)
+        {
+            magneticEffect.SetActive(false);
         }
     }
 

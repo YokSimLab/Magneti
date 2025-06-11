@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = 120;
         }
     }
 

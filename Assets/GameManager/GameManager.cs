@@ -89,14 +89,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        if (level == 0)
-        {
-            Application.targetFrameRate = 120;
-        }
-        else
-        { 
-            Application.targetFrameRate = 120;
-        }
+        Application.targetFrameRate = 120;
     }
 
     private void Update()

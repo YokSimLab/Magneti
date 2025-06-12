@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459585949164604236, guid: 3bb43b90ad4f3a247b2eb918dd3ea086, type: 3}
       propertyPath: m_SortingOrder
-      value: 32767
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 459585949164604236, guid: 3bb43b90ad4f3a247b2eb918dd3ea086, type: 3}
       propertyPath: m_SortingLayerID
@@ -802,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459585949164604236, guid: 3bb43b90ad4f3a247b2eb918dd3ea086, type: 3}
       propertyPath: m_SortingOrder
-      value: 32767
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 459585949164604236, guid: 3bb43b90ad4f3a247b2eb918dd3ea086, type: 3}
       propertyPath: m_SortingLayerID
@@ -1663,7 +1663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459585949164604236, guid: 3bb43b90ad4f3a247b2eb918dd3ea086, type: 3}
       propertyPath: m_SortingOrder
-      value: 32767
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 459585949164604236, guid: 3bb43b90ad4f3a247b2eb918dd3ea086, type: 3}
       propertyPath: m_SortingLayerID
@@ -2816,8 +2816,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 639384137}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

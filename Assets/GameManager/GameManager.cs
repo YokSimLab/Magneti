@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        Application.targetFrameRate = 120;
+        Application.targetFrameRate = 60;
     }
 
     private void Update()
